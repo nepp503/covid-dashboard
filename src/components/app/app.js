@@ -6,6 +6,11 @@ import Header from "../header";
 import Diagram from "../diagram";
 import TopCaseCountries from "../topCaseCountries";
 import GlobalCasesTable from "../globalCasesTable";
+import {createStore} from "redux";
+
+const store = createStore()
+
+console.log("storage", store)
 
 export default class App extends React.Component {
 
@@ -17,9 +22,9 @@ export default class App extends React.Component {
 
                 <GlobalCases />
 
-                <GlobalCasesTable />  /* Окно № 1 */
+                <GlobalCasesTable />  {/* Окно № 1 */}
 
-                <TopCaseCountries /> /* Окно № 2 */
+                <TopCaseCountries /> {/* Окно № 2 */}
 
                 <Map />
 
