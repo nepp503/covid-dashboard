@@ -15,15 +15,25 @@ export default class App extends React.Component {
 
                 <Header />
 
-                <GlobalCases />
+                <div className = 'global_cases_container'>
 
-                <GlobalCasesTable />  /* Окно № 1 */
+                    <GlobalCases />
 
-                <TopCaseCountries /> /* Окно № 2 */
+                    <GlobalCasesTable /> 
+
+                </div>
 
                 <Map />
 
-                <Diagram />
+                <div className = 'cases_and_diagramm_container'>
+
+                    <TopCaseCountries /> 
+
+                    <Diagram />
+
+                </div>
+
+              
 
             </div>
         );
