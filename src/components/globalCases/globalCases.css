@@ -1,0 +1,6 @@
+.globalCasesCard {
+    box-sizing: border-box;
+    width: 100%;
+    background: rgba(255,255,255,.2);
+    border: solid 2px rgba(255,255,255,.1);
+}
