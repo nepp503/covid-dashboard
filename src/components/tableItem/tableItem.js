@@ -1,8 +1,9 @@
-import "./globalCasesTable.css"
+import "./tableItem.css"
 import React from "react";
 
 
-export default class GlobalCasesTable extends React.Component {
+export default class TableItem extends React.Component {
+
     render() {
       return (
           <div>
