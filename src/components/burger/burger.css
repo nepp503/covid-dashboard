@@ -8,7 +8,6 @@
   transition: linear all .05s;
   cursor: pointer;
   z-index: 1000;
-
 }
 
 .level-menu-toggle-wrapper:hover {
