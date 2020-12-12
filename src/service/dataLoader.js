@@ -15,36 +15,10 @@ export default class DataLoader {
     }
 
     getCountries = async() => {
-        // 0: {Country: "Guinea-Bissau", Slug: "guinea-bissau", ISO2: "GW"}
-        // 1: {Country: "Heard and Mcdonald Islands", Slug: "heard-and-mcdonald-islands", ISO2: "HM"}
-        // 2: {Country: "New Zealand", Slug: "new-zealand", ISO2: "NZ"}
         return await this._getResource("countries")
     }
 
-    _getRestCountries = async() => {
-        let res = await fetch(this._population_api)
-
-        if (!res.ok) {
-            throw new Error("Api error")
-        }
-        return res.json()
-    }
-
-    getPopulationAndFlags = async() => {
-        // 1: {flag: "https://restcountries.eu/data/ala.svg", name: "Åland Islands", population: 28875}
-        // 2: {flag: "https://restcountries.eu/data/alb.svg", name: "Albania", population: 2886026}
-        // 3: {flag: "https://restcountries.eu/data/dza.svg", name: "Algeria", population: 40400000}
-        // 4: {flag: "https://restcountries.eu/data/asm.svg", name: "American Samoa", population: 57100}
-        // 5: {flag: "https://restcountries.eu/data/and.svg", name: "Andorra", population: 78014}
-        return this._getRestCountries()
-    }
-
-    _getSummary = async() => {
-        return this._getResource("summary")
-    }
-
     getTotalCases = async(countryName = "") => {
-    // общее количество случаев заболевания
         let cases = await this._getSummary()
 
         if (countryName) {
@@ -58,8 +32,25 @@ export default class DataLoader {
         return cases.Global.TotalConfirmed
     }
 
+    _getRestCountries = async() => {
+        let res = await fetch(this._population_api)
+
+        if (!res.ok) {
+            throw new Error("Api error")
+        }
+        return res.json()
+    }
+
+    getPopulationAndFlags = async() => {
+        return this._getRestCountries()
+    }
+
+    _getSummary = async() => {
+        return this._getResource("summary")
+    }
+
+
     getTotalDeath = async(countryName="") => {
-    // общее количество летальных исходов
         let cases = await this._getSummary()
 
         console.log(countryName)
@@ -76,7 +67,6 @@ export default class DataLoader {
     }
 
     getTotalRecovered = async(countryName = "") =>  {
-    // общее количество выздоровевших
         let cases = await this._getSummary()
 
         if (countryName) {
@@ -91,7 +81,6 @@ export default class DataLoader {
     }
 
     getCasesLastDay = async(countryName = "") => {
-    // количество случаев заболевания за последний день
         let cases = await this._getSummary()
 
         if (countryName) {
@@ -106,7 +95,6 @@ export default class DataLoader {
     }
 
     getDeathLastDay = async(countryName = "") => {
-    // количество летальных исходов за последний день
         let cases = await this._getSummary()
 
         if (countryName) {
@@ -121,7 +109,6 @@ export default class DataLoader {
     }
 
     getRecoveredLastDay = async(countryName = "") => {
-    // количество выздоровевших за последний день
         let cases = await this._getSummary()
 
         if (countryName) {
@@ -136,7 +123,6 @@ export default class DataLoader {
     }
 
     totalCasesPer100thousand = async(countryName = "") => {
-    // общее количество случаев заболевания из расчёта на 100 тыс. населения
         let population =  this.getPopulationAndFlags()
         let cases = await this._getSummary()
 
@@ -155,7 +141,6 @@ export default class DataLoader {
     }
 
     totalDeathPer100thousand = async(countryName = "") => {
-    // общее количество летальных исходов из расчёта на 100 тыс. населения
         let population =  this.getPopulationAndFlags()
         let cases = await this._getSummary()
 
@@ -173,7 +158,6 @@ export default class DataLoader {
     }
 
     totalRecoveredPer100thousand = async(countryName = "") => {
-    // общее количество выздоровевших из расчёта на 100 тыс. населения
         let population =  this.getPopulationAndFlags()
         let cases = await this._getSummary()
 
@@ -191,7 +175,6 @@ export default class DataLoader {
     }
 
     totalCasesPer100thousandInLastDay = async(countryName = "") => {
-    // количество случаев заболевания за последний день из расчёта на 100 тыс. населения
         let population =  this.getPopulationAndFlags()
         let cases = await this._getSummary()
 
@@ -206,11 +189,9 @@ export default class DataLoader {
             }
         }
         return (cases.Global.NewConfirmed / 7700000000) * 100000
-
     }
 
     totalDeathPer100thousandInLastDay = async(countryName = "") => {
-    // количество летальных исходов за последний день из расчёта на 100 тыс. населения
         let population =  this.getPopulationAndFlags()
         let cases = await this._getSummary()
 
@@ -229,7 +210,6 @@ export default class DataLoader {
     }
 
     totalRecoveredPer100thousandInLastDay = async(countryName = "") => {
-    // количество выздоровевших за последний день из расчёта на 100 тыс. населения
         let population =  this.getPopulationAndFlags()
         let cases = await this._getSummary()
 
@@ -275,4 +255,6 @@ export default class DataLoader {
 // t.numberOfDeathLastDay("Russia")
 //     .then( data => console.log("8", data))
 // t.numberOfRecoveredLastDay("Russia")
-//     .then( data => console.log("9", data))
+//     .then( data => func)
+
+

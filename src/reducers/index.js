@@ -15,14 +15,16 @@
 // }
 //
 // setValues()
-//
-//
-// function createReducers() {
-//     console.log("fvfvfv",countries, slugs)
-//     return combineReducers({
-//         "countries": countries,
-//         "slugs": slugs
-//     })
-// }
+
+
+function createReducers() {
+
+    return combineReducers({
+        "countries": countries,
+        "slugs": slugs
+    })
+}
+
+// REDUX-THUNK
 
 // createReducers()
