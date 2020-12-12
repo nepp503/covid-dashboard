@@ -21,10 +21,16 @@ export default class GlobalCases extends React.Component {
     }
 
     onCasesLoad = (cases) => {
+        let newCases = this.readableNumber(cases)
+        console.log(newCases)
         this.setState({
-            cases,
+            cases: newCases,
             loader:false
         })
+    }
+
+    readableNumber = (number) => {
+        return number.toLocaleString("ru")
     }
 
     getCases = () => {

@@ -24,7 +24,6 @@ export default class DataLoader {
     getTotalCases = async() => {
     // общее количество случаев заболевания
         let cases = await this.getSummary()
-        console.log("cases", cases)
         return cases.Global.TotalConfirmed
     }
 
