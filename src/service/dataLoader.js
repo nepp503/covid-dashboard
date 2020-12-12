@@ -1,8 +1,4 @@
 
-
-
-
-
 export default class DataLoader {
 
     _api_base = 'https://api.covid19api.com/';
@@ -28,6 +24,7 @@ export default class DataLoader {
     getTotalCases = async() => {
     // общее количество случаев заболевания
         let cases = await this.getSummary()
+        console.log("cases", cases)
         return cases.Global.TotalConfirmed
     }
 
@@ -97,18 +94,3 @@ export default class DataLoader {
 
     }
 }
-
-let t = new DataLoader()
-
-t.getTotalCases()
-    .then( cases => console.log(cases))
-
-
-t.getTotalDeath()
-    .then( cases => console.log(cases))
-
-t.getTotalRecovered()
-    .then( cases => console.log(cases))
-
-t.getCountries()
-    .then( countries => console.log(countries))
