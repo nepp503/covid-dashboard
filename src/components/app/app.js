@@ -11,30 +11,21 @@ export default class App extends React.Component {
 
     render() {
         return (
-            <div className='container'>
-
+            <div>
                 <Header />
+                <div className='container'>
+                    <div className = 'global_cases_container'>
+                        <GlobalCases />
+                        <GlobalCasesTable />
+                    </div>
 
-                <div className = 'global_cases_container'>
+                    <Map />
 
-                    <GlobalCases />
-
-                    <GlobalCasesTable /> 
-
+                    <div className = 'cases_and_diagram_container'>
+                        <TopCaseCountries />
+                        <Diagram />
+                    </div>
                 </div>
-
-                <Map />
-
-                <div className = 'cases_and_diagramm_container'>
-
-                    <TopCaseCountries /> 
-
-                    <Diagram />
-
-                </div>
-
-              
-
             </div>
         );
     };
