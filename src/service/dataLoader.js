@@ -1,8 +1,4 @@
 
-
-
-
-
 export default class DataLoader {
 
     _api_base = 'https://api.covid19api.com/';
@@ -23,6 +19,15 @@ export default class DataLoader {
 
     getSummary = async() => {
         return this.getResource("summary")
+    }
+
+    getTopTenCountries = async(caseType = "TotalConfirmed") => {
+        let info = await this.getSummary()
+        let topValues = info.Countries.sort((a,b) => {
+                            return b[caseType] - a[caseType]
+                        }).slice(0, 30)
+
+        return topValues
     }
 
     getTotalCases = async() => {
@@ -98,17 +103,7 @@ export default class DataLoader {
     }
 }
 
+
 let t = new DataLoader()
 
-t.getTotalCases()
-    .then( cases => console.log(cases))
-
-
-t.getTotalDeath()
-    .then( cases => console.log(cases))
-
-t.getTotalRecovered()
-    .then( cases => console.log(cases))
-
-t.getCountries()
-    .then( countries => console.log(countries))
+t.getTopTenCountries()

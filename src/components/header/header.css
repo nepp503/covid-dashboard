@@ -1,0 +1,18 @@
+
+.header {
+    height: 60px;
+    background: rgba(255,255,255,.2);
+    border: solid 2px rgba(255,255,255,.1);
+    border-top: none;
+    margin: 0 10px 10px 10px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.header h1 {
+    margin: 0;
+    color: rgba(255,255,255,.7);
+}
