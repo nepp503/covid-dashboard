@@ -21,6 +21,15 @@ export default class DataLoader {
         return this.getResource("summary")
     }
 
+    getTopTenCountries = async(caseType = "TotalConfirmed") => {
+        let info = await this.getSummary()
+        let topValues = info.Countries.sort((a,b) => {
+                            return b[caseType] - a[caseType]
+                        }).slice(0, 10)
+
+        return topValues
+    }
+
     getTotalCases = async() => {
     // общее количество случаев заболевания
         let cases = await this.getSummary()
@@ -93,3 +102,8 @@ export default class DataLoader {
 
     }
 }
+
+
+let t = new DataLoader()
+
+t.getTopTenCountries()

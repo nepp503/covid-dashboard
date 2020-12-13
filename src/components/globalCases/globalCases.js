@@ -13,11 +13,7 @@ export default class GlobalCases extends React.Component {
     }
 
     componentDidMount = () => {
-        const timout = setTimeout(this.getCases, 2000);
-    }
-
-    componentWillUnmount() {
-        clearInterval( this.timout );
+        setTimeout(this.getCases, 2000);
     }
 
     onCasesLoad = (cases) => {
