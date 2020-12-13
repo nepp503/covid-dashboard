@@ -25,7 +25,7 @@ export default class DataLoader {
         let info = await this.getSummary()
         let topValues = info.Countries.sort((a,b) => {
                             return b[caseType] - a[caseType]
-                        }).slice(0, 10)
+                        }).slice(0, 30)
 
         return topValues
     }

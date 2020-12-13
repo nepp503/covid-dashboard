@@ -59,7 +59,7 @@ h6 {
     height: calc(100vh - 90px);
     display: grid;
     justify-content: center;
-    grid-template-columns: 15% 1fr 25%;
+    grid-template-columns: 20% 1fr 25%;
     grid-column-gap: 10px;
     box-sizing: border-box;
 }
