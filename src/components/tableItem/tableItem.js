@@ -13,7 +13,7 @@ export default class TableItem extends React.Component {
     componentDidMount = () => {
         const { getTableItems } = this.props
 
-        setTimeout(() => this.loadItems(getTableItems), 1000)
+        setTimeout(() => this.loadItems(getTableItems), 2000)
     }
 
     loadItems = (getTableItems) => {
