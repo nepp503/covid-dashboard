@@ -25,19 +25,16 @@ export default class TableItem extends React.Component {
             })
     }
 
-    tableItems = (arr, caseType = "TotalConfirmed") => {
-        console.log("table items array", arr)
-
+    tableItems = (arr, caseType = "cases") => {
         if (arr !== null) {
-            return arr.map((item) => {
-                const { Country, } = item
+            return arr.map((item, index) => {
+                const { country } = item
                 const someCase = item[caseType]
 
-                console.log(Country, someCase)
                 return (
-                    <li className='list-group-item'>
+                    <li className='list-group-item' key={index}>
                         <span>{someCase}</span>
-                        <span>{ Country }</span>
+                        <span>{country}</span>
                     </li>
                 )
 

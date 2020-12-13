@@ -19,7 +19,7 @@ export default class GlobalCasesTable extends React.Component {
           <div className="globalCasesTable">
             <h2>Cases by country/region</h2>
             <TableItem
-                getTableItems = {this.dataLoader.getTopTenCountries}
+                getTableItems = {this.dataLoader.getSortedCountries}
             />
           </div>
       )
