@@ -32,7 +32,10 @@ export default class TableItem extends React.Component {
                 const someCase = item[caseType]
 
                 return (
-                    <li className='list-group-item' key={index}>
+                    <li className='list-group-item'
+                        key={index}
+                        onClick = {()=> this.props.onSelectedItem(index)}
+                    >
                         <span>{someCase}</span>
                         <span>{country}</span>
                     </li>
