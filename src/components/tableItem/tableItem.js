@@ -17,7 +17,9 @@ export default class TableItem extends React.Component {
     }
 
     loadItems = (getTableItems) => {
-        getTableItems()
+        let dgug = 'cases'
+        // if (this.params.aditionalParam) dgug = this.params.aditionalParam
+        getTableItems(dgug)
             .then((itemsList) => {
                 this.setState({
                     itemsList

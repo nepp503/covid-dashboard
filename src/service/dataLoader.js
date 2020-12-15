@@ -1,109 +1,33 @@
 
 export default class DataLoader {
 
-    _api_base = 'https://api.covid19api.com/';
+    _desease_base = "https://disease.sh/v3/covid-19/";
 
     getResource = async(url) => {
-        let res = await fetch(`${this._api_base}${url}`)
+        let res = await fetch(`${this._desease_base}${url}`)
 
         if (!res.ok) {
             throw new Error("Api error")
         }
-
         return res.json()
     }
 
-    getCountries = async() => {
-        return this.getResource("countries")
-    }
-
-    getSummary = async() => {
-        return this.getResource("summary")
-    }
-
-    getTopTenCountries = async(caseType = "TotalConfirmed") => {
-        let info = await this.getSummary()
-        let topValues = info.Countries.sort((a,b) => {
-                            return b[caseType] - a[caseType]
-                        }).slice(0, 30)
-
-        return topValues
+    getSortedCountries = async(sortType = "cases") => {
+        return await this.getResource(`countries?sort=${sortType}`)
     }
 
     getTotalCases = async() => {
-    // общее количество случаев заболевания
-        let cases = await this.getSummary()
-        return cases.Global.TotalConfirmed
+        let cases = await this.getResource("all")
+        return cases.cases
     }
 
     getTotalDeath = async() => {
-    // общее количество летальных исходов
-        let death = await this.getSummary()
-        return death.Global.TotalDeaths
+        let cases = await this.getResource("all")
+        return cases.deaths
     }
 
     getTotalRecovered = async() =>  {
-    // общее количество выздоровевших
-        let recovered = await this.getSummary()
-        return recovered.Global.TotalRecovered
-    }
-
-    numberOfCasesLastDay() {
-    // количество случаев заболевания за последний день
-
-
-    }
-
-    numberOfDeathLastDay() {
-    // количество летальных исходов за последний день
-
-
-    }
-
-    numberOfRecoveredLastDay() {
-    // количество выздоровевших за последний день
-
-
-    }
-
-    totalCasesPer100thousand () {
-    // общее количество случаев заболевания из расчёта на 100 тыс. населения
-
-
-    }
-
-    totalDeathPer100thousand () {
-    // общее количество летальных исходов из расчёта на 100 тыс. населения
-
-
-    }
-
-    totalRecoveredPer100thousand () {
-    // общее количество выздоровевших из расчёта на 100 тыс. населения
-
-
-    }
-
-    totalCasesPer100thousandInLastDay() {
-    // количество случаев заболевания за последний день из расчёта на 100 тыс. населения
-
-
-    }
-
-    totalDeathPer100thousandInLastDay() {
-    // количество летальных исходов за последний день из расчёта на 100 тыс. населения
-
-
-    }
-
-    totalRecoveredPer100thousandInLastDay() {
-    // количество выздоровевших за последний день из расчёта на 100 тыс. населения
-
-
+        let cases = await this.getResource("all")
+        return cases.recovered
     }
 }
-
-
-let t = new DataLoader()
-
-t.getTopTenCountries()

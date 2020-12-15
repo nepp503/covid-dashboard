@@ -8,7 +8,7 @@ export default class GlobalCasesTable extends React.Component {
     dataLoader = new DataLoader()
 
     state = {
-        topCasesList: null,
+        topCountiesCases: null,
         loader: true,
         error: false
     }
@@ -20,7 +20,6 @@ export default class GlobalCasesTable extends React.Component {
             <h2>Cases by country/region</h2>
             <TableItem
                 getTableItems = {this.dataLoader.getSortedCountries}
-                onSelectedItem = {this.props.handleCountry}
             />
           </div>
       )
