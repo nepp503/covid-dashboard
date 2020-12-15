@@ -9,6 +9,17 @@ import GlobalCasesTable from "../globalCasesTable";
 
 export default class App extends React.Component {
 
+    state = {
+        selectedCountryID: null,
+    }
+
+    onSelectedCountry = (index) => {
+        console.log(index)
+        this.setState({
+            selectedCountry: index
+        })
+    }
+
     render() {
         return (
             <div>
@@ -16,7 +27,9 @@ export default class App extends React.Component {
                 <div className='container'>
                     <div className = 'global_cases_container'>
                         <GlobalCases />
-                        <GlobalCasesTable />
+                        <GlobalCasesTable
+                          handleCountry = {this.onSelectedCountry}
+                        />
                     </div>
 
                     <Map />
