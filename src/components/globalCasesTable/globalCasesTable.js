@@ -1,6 +1,5 @@
 import "./globalCasesTable.css"
 import React from "react";
-import ReactDOM from 'react-dom';
 import DataLoader from "../../service/dataLoader";
 import TableItem from "../tableItem";
 import InputItem from "../inputItem";
@@ -10,13 +9,23 @@ export default class GlobalCasesTable extends React.Component {
 
     dataLoader = new DataLoader()
 
-    state = {
+  constructor() {
+    super()
+    this.state = {
         topCasesList: null,
         loader: true,
         error: false,
-        caseType: null,
+        caseType: "cases",
     }
+  }
 
+    caseTypeSwitcher = (e) => {
+        console.log(e.currentTarget.id)
+        this.setState({
+            caseType: e.currentTarget.id
+        })
+        console.log(this.state.caseType)
+    }
 
 
     render() {
@@ -31,7 +40,7 @@ export default class GlobalCasesTable extends React.Component {
             </div>
             <TableItem
                 caseType = {this.state.caseType}
-                getTableItems = {()=> this.dataLoader.getSortedCountries()}
+                getTableItems = {this.dataLoader.getSortedCountries}
                 onSelectedItem = {this.props.handleCountry}
             />
           </div>
