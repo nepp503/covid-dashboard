@@ -17,28 +17,20 @@ export default class GlobalCasesTable extends React.Component {
         caseType: null,
     }
 
-    caseTypeSwitcher = (e) => {
-        console.log(this.state.caseType)
-        ReactDOM.render(<TableItem
-                            aditionalParam = {e.currentTarget.id}
-                            getTableItems = {this.dataLoader.getSortedCountries}
-                            // onSelectedItem = {this.props.handleCountry}
-                        />, document.querySelector('.table'));
-    }
+
 
     render() {
       return (
           <div className="globalCasesTable">
-            <h2>Cases by country/region</h2>
             <InputItem />
+            <h2>Cases by country/region</h2>
             <div className="case-switcher">
                 <div className="case-switcher__item" id="cases" onClick={this.caseTypeSwitcher}><MaterialIcon title="Cases" icon="work" color='#ffffff' size={30}/></div>
                 <div className="case-switcher__item" id="recovered" onClick={this.caseTypeSwitcher}><MaterialIcon title="recovered" icon="health_and_safety" color='#ffffff' size={30}/></div>
                 <div className="case-switcher__item" id="deaths" onClick={this.caseTypeSwitcher}><MaterialIcon title="deaths" icon="report_problem" color='#ffffff' size={30}/></div>
             </div>
-
             <TableItem
-                aditionalParam = {this.state.caseType}
+                caseType = {this.state.caseType}
                 getTableItems = {()=> this.dataLoader.getSortedCountries()}
                 onSelectedItem = {this.props.handleCountry}
             />
