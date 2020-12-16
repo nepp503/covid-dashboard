@@ -4,7 +4,7 @@ import GlobalCases from "../globalCases";
 import Map from "../map";
 import Header from "../header";
 import Diagram from "../diagram";
-import TopCaseCountries from "../topCaseCountries";
+import CountryInfoTable from "../countryInfoTable";
 import GlobalCasesTable from "../globalCasesTable";
 import DataLoader from "../../service/dataLoader";
 
@@ -32,15 +32,16 @@ export default class App extends React.Component {
                         <GlobalCases />
                         <GlobalCasesTable
                           handleCountry = {this.onSelectedCountry}
+                          getCountries   = {this.dataLoader.getSortedCountries}
                         />
                     </div>
-
-                    <Map 
+                    <Map
                         toggleCountries = { this.dataLoader.getSortedCountries }
                     />
-
                     <div className = 'cases_and_diagram_container'>
-                        <TopCaseCountries />
+                        <CountryInfoTable
+                          selectedCountryObj = {this.state.selectedCountryObj}
+                        />
                         <Diagram />
                     </div>
                 </div>
