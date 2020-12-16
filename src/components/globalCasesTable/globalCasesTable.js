@@ -3,7 +3,7 @@ import React from "react";
 import ReactDOM from 'react-dom';
 import DataLoader from "../../service/dataLoader";
 import TableItem from "../tableItem";
-import InputItem from "../../inputItem";
+import InputItem from "../inputItem";
 import MaterialIcon from 'material-icons-react';
 
 export default class GlobalCasesTable extends React.Component {
