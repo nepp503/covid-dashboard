@@ -13,14 +13,13 @@ export default class App extends React.Component {
     dataLoader = new DataLoader()
 
     state = {
-        selectedCountryID: null,
-        caseType: 'cases',
+        selectedCountryObj: null,
     }
 
-    onSelectedCountry = (index) => {
-        console.log(index)
+    onSelectedCountry = (obj) => {
+        console.log(obj)
         this.setState({
-            selectedCountry: index
+            selectedCountryObj: obj
         })
     }
 

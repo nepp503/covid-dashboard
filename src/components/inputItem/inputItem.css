@@ -1,0 +1,20 @@
+.inputItem input[type="text"]{
+    width: 100px;
+    border-radius: 3px;
+    border: none;
+    height: 22px;
+}
+
+.inputItem input[type="submit"]{
+    width: 60px;
+    border-radius: 3px;
+    border: none;
+    height: 25px;
+    margin-left: 5px;
+}
+
+.inputItem {
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
