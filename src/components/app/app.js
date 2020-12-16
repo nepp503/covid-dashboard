@@ -10,13 +10,13 @@ import GlobalCasesTable from "../globalCasesTable";
 export default class App extends React.Component {
 
     state = {
-        selectedCountryID: null,
+        selectedCountryObj: null,
     }
 
-    onSelectedCountry = (index) => {
-        console.log(index)
+    onSelectedCountry = (obj) => {
+        console.log(obj)
         this.setState({
-            selectedCountry: index
+            selectedCountryObj: obj
         })
     }
 
