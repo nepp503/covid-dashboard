@@ -16,6 +16,9 @@ export default class DataLoader {
         return await this.getResource(`countries?sort=${sortType}`)
     }
 
+    getWorldStats = async() => {
+        return await this.getResource("all")
+    }
     getTotalCases = async() => {
         let cases = await this.getResource("all")
         return cases.cases

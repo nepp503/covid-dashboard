@@ -45,6 +45,7 @@ export default class App extends React.Component {
                     <div className = 'cases_and_diagram_container'>
                         <CountryInfoTable
                           selectedCountryObj = {this.state.selectedCountryObj}
+                          getWorldStats         = {this.dataLoader.getWorldStats}
                         />
                         <Diagram />
                     </div>

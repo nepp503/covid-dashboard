@@ -1,12 +1,15 @@
 import "./countryInfoTable.css"
 import React from "react";
 import TableItem from "../tableItem/tableItem"
+import Spinner from "../spinner";
 
 export default class CountryInfoTable extends React.Component {
 
     state = {
       selectedCountryObj: this.props.selectedCountryObj,
+      worldStats: null,
       loader: true,
+      error: false
     }
 
     shouldComponentUpdate(nextProps, nextState, nextContext) {
@@ -15,11 +18,28 @@ export default class CountryInfoTable extends React.Component {
       return true
     }
 
+    componentDidMount = () => {
+      const { getWorldStats } = this.props;
+      setTimeout(() => this.loadItems(getWorldStats, null), 1000)
+    }
+
+    loadItems = (func, arg) => {
+        console.log(func)
+        func()
+            .then((worldStats) => {
+                console.log("inside", worldStats)
+                this.setState({
+                    loader:false,
+                    worldStats
+            })
+        })
+    }
+
 
     render() {
-      const { loader, selectedCountryObj} =  this.state;
-      const hasData = !loader
-      const content = hasData?
+      const { selectedCountryObj, worldStats, loader, error } =  this.state;
+      const hasData = !(loader || error)
+      const content = this.state.selectedCountryObj?
               <TableItem
                 renderLabel ={(item) => {
                         return (
@@ -32,7 +52,18 @@ export default class CountryInfoTable extends React.Component {
                 }
                 itemsArray = {selectedCountryObj}
             /> :
-            <h2>Select country for getting specific information</h2>;
+            <TableItem
+                renderLabel ={(item) => {
+                        return (
+                            <React.Fragment>
+                                <span>{item[this.state.caseType]}</span>
+                                <span>{item["country"]}</span>
+                            </React.Fragment>
+                        )
+                    }
+                }
+                itemsArray = {worldStats}
+            />
       return (
           <div className="countryInfoTable">
             <h2>Country INFO</h2>
