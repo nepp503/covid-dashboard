@@ -7,15 +7,14 @@
     padding-bottom: 5px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-content: center;
-    text-align: center;
     font-weight: 100;
 }
 
 .countryInfoTable h2{
+    text-align: center;
     margin: 0;
     margin-bottom: 10px;
     font-size: 17px;
-    font-weight: 200;
+    font-weight: 100;
 }
+

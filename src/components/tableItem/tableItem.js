@@ -11,13 +11,16 @@ export default class TableItem extends React.Component {
         }
     }
 
+    toHumanReadableNumber(num) {
+        return num.toLocaleString("ru")
+    }
+
     tableItems = (arr) => {
         if (Array.isArray(arr)) {
             return arr.map((item, index) => {
-                // console.log("country info", arr)
                 const label = this.props.renderLabel(item)
                 return (
-                    <li className='list-group-item'
+                    <li className='list-group__item'
                       key={index}
                       onClick = {()=> this.props.onSelectedItem(item)}
                     >
@@ -36,12 +39,11 @@ export default class TableItem extends React.Component {
               if (typeof item !== "object") {
                   if(keys.includes(key)) {
                       return (
-                          <li className='list-group-item'
+                          <li className='list-group__item countryInfo'
                               key={index}
-                              onClick={() => this.props.onSelectedItem(item)}
                           >
-                              <span>{key}</span>
-                              <span>{item}</span>
+                              <span style={{"color": "rgba(255,255,255, .7)", "fontWeight": "300"}}>{key.toUpperCase()}: </span>
+                              <span style={{"fontWeight": "900"}}>{this.toHumanReadableNumber(item)}</span>
                           </li>
                       )
                   }

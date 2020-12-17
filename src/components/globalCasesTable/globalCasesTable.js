@@ -33,6 +33,10 @@ export default class GlobalCasesTable extends React.Component {
         return this.state.caseType = nextState.caseType
     }
 
+    toHumanReadableNumber(num) {
+        return num.toLocaleString("ru")
+    }
+
     loadItems = (func, arg) => {
         func(arg)
             .then((itemsArray) => {
@@ -56,7 +60,7 @@ export default class GlobalCasesTable extends React.Component {
                 renderLabel ={(item) => {
                         return (
                             <React.Fragment>
-                                <span>{item[this.state.caseType]}</span>
+                                <span>{this.toHumanReadableNumber(item[this.state.caseType])}</span>
                                 <span>{item["country"]}</span>
                             </React.Fragment>
                         )
