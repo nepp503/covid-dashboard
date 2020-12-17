@@ -3,21 +3,28 @@ import './app.css';
 import GlobalCases from "../globalCases";
 import Map from "../map";
 import Header from "../header";
-import TopCaseCountries from "../topCaseCountries";
+import Diagram from "../diagram";
+import CountryInfoTable from "../countryInfoTable";
 import GlobalCasesTable from "../globalCasesTable";
-import DiagramBoard from '../diagram/diagramBoard';
+import DataLoader from "../../service/dataLoader";
 
 export default class App extends React.Component {
 
+    dataLoader = new DataLoader()
+
     state = {
-        selectedCountryID: null,
+        selectedCountryObj: null,
     }
 
-    onSelectedCountry = (index) => {
-        console.log(index)
+    onSelectedCountry = (obj) => {
+        console.log(obj)
         this.setState({
-            selectedCountry: index
+            selectedCountryObj: obj
         })
+    }
+
+    shouldComponentUpdate(nextProps, nextState, nextContext) {
+      return this.state.selectedCountryObj = nextState.selectedCountryObj
     }
 
     render() {
@@ -29,14 +36,18 @@ export default class App extends React.Component {
                         <GlobalCases />
                         <GlobalCasesTable
                           handleCountry = {this.onSelectedCountry}
+                          getCountries   = {this.dataLoader.getSortedCountries}
                         />
                     </div>
-
-                    <Map />
-
+                    <Map
+                        toggleCountries = { this.dataLoader.getSortedCountries }
+                    />
                     <div className = 'cases_and_diagram_container'>
-                        <TopCaseCountries />
-                        <DiagramBoard />
+                        <CountryInfoTable
+                          selectedCountryObj = {this.state.selectedCountryObj}
+                          getWorldStats         = {this.dataLoader.getWorldStats}
+                        />
+                        <Diagram />
                     </div>
                 </div>
             </div>

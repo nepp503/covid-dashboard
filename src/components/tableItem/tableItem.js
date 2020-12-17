@@ -1,54 +1,68 @@
 import "./tableItem.css"
 import React from "react";
-
+import Spinner from "../spinner"
 
 export default class TableItem extends React.Component {
 
-    state = {
-        itemsList: null,
-        loading: true,
-        errors: false
+    constructor(props) {
+        super(props)
+        this.state = {
+            itemsArray: this.props.itemsArray
+        }
     }
 
-    componentDidMount = () => {
-        const { getTableItems } = this.props
-
-        setTimeout(() => this.loadItems(getTableItems), 2000)
+    shouldComponentUpdate(nextProps, nextState, nextContext) {
+        return this.state.itemsArray = nextProps.itemsArray
     }
 
-    loadItems = (getTableItems) => {
-        getTableItems()
-            .then((itemsList) => {
-                this.setState({
-                    itemsList
-                })
-            })
+    toHumanReadableNumber(num) {
+        return num.toLocaleString("ru")
     }
 
-    tableItems = (arr, caseType = "cases") => {
-        if (arr !== null) {
+    tableItems = (arr) => {
+        if (Array.isArray(arr)) {
             return arr.map((item, index) => {
-                const { country } = item
-                const someCase = item[caseType]
-
+                const label = this.props.renderLabel(item)
                 return (
-                    <li className='list-group-item'
-                        key={index}
-                        onClick = {()=> this.props.onSelectedItem(index)}
+                    <li className='list-group__item'
+                      key={index}
+                      onClick = {()=> this.props.onSelectedItem(item)}
                     >
-                        <span>{someCase}</span>
-                        <span>{country}</span>
+                      {label}
                     </li>
                 )
+            })
+        } else {
+            return Object.keys(arr).map((key, index) => {
+              let item = arr[key]
+              console.log( key, item)
+              let keys = ["todayCases", "cases", "deaths", "recovered", "todayDeaths", "critical",
+                          "todayRecovered", "casesPerOneMillion ", "deathsPerOneMillion", "tests", "population",
+              ]
 
+              if (typeof item !== "object") {
+                  if(keys.includes(key)) {
+                      return (
+                          <li className='list-group__item countryInfo'
+                              key={index}
+                          >
+                              <span style={{"color": "rgba(255,255,255, .7)", "fontWeight": "300"}}>{key.toUpperCase()}: </span>
+                              <span style={{"fontWeight": "900"}}>{this.toHumanReadableNumber(item)}</span>
+                          </li>
+                      )
+                  }
+              }
             })
         }
     }
 
     render() {
+      const { itemsArray } = this.state;
+      if ( !itemsArray) {
+            return <Spinner />
+      }
 
-      const { itemsList } = this.state;
-      const items = this.tableItems(itemsList)
+      const items = this.tableItems(itemsArray);
 
       return (
           <div className="table">
@@ -58,5 +72,4 @@ export default class TableItem extends React.Component {
           </div>
       )
     }
-
 }

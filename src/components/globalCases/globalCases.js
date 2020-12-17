@@ -44,7 +44,6 @@ export default class GlobalCases extends React.Component {
 
     render() {
       let cases = this.state.cases;
-
       return (
           <div className="globalCasesCard">
             <h2>Global Cases</h2>
