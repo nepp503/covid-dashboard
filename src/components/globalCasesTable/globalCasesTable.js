@@ -1,20 +1,25 @@
 import "./globalCasesTable.css"
 import React from "react";
-import ReactDOM from 'react-dom';
-import DataLoader from "../../service/dataLoader";
 import TableItem from "../tableItem";
-import InputItem from "../inputItem";
+import FormItem from "../formItem";
 import MaterialIcon from 'material-icons-react';
+import Spinner from '../spinner';
+import ErrorIndicator from '../error-indicator';
 
 export default class GlobalCasesTable extends React.Component {
 
-    dataLoader = new DataLoader()
-
     state = {
+        itemsArray: [],
         topCasesList: null,
         loader: true,
         error: false,
         caseType: "cases",
+    }
+
+    componentDidMount = () => {
+        const { getCountries } = this.props
+
+        setTimeout(() => this.loadItems(getCountries, this.state.caseType), 2000)
     }
 
     caseTypeSwitcher = (e) => {
@@ -24,22 +29,56 @@ export default class GlobalCasesTable extends React.Component {
         })
     }
 
+    shouldComponentUpdate(nextProps, nextState, nextContext) {
+        return this.state.caseType = nextState.caseType
+    }
+
+    loadItems = (func, arg) => {
+        func(arg)
+            .then((itemsArray) => {
+                console.log("inside", itemsArray)
+                this.setState({
+                    loader:false,
+                    itemsArray
+            })
+        })
+    }
+
     render() {
+
+    const { itemsArray, error, loader } = this.state;
+
+    const hasData = !(loader || error )
+    const errorIndicator = error? <ErrorIndicator />:null;
+    const spinner = loader? <Spinner /> : null;
+    const content = hasData?
+            <TableItem
+                renderLabel ={(item) => {
+                        return (
+                            <React.Fragment>
+                                <span>{item[this.state.caseType]}</span>
+                                <span>{item["country"]}</span>
+                            </React.Fragment>
+                        )
+                    }
+                }
+                itemsArray = {itemsArray}
+                onSelectedItem = {this.props.handleCountry}
+            /> :
+            null;
+
       return (
           <div className="globalCasesTable">
+            <FormItem />
             <h2>Cases by country/region</h2>
-            <InputItem />
             <div className="case-switcher">
                 <div className="case-switcher__item" id="cases" onClick={this.caseTypeSwitcher}><MaterialIcon title="Cases" icon="work" color='#ffffff' size={30}/></div>
                 <div className="case-switcher__item" id="recovered" onClick={this.caseTypeSwitcher}><MaterialIcon title="recovered" icon="health_and_safety" color='#ffffff' size={30}/></div>
                 <div className="case-switcher__item" id="deaths" onClick={this.caseTypeSwitcher}><MaterialIcon title="deaths" icon="report_problem" color='#ffffff' size={30}/></div>
             </div>
-
-            <TableItem
-                caseType = {this.state.caseType}
-                getTableItems = {this.dataLoader.getSortedCountries}
-                onSelectedItem = {this.props.handleCountry}
-            />
+              {errorIndicator}
+              {spinner}
+              {content}
           </div>
       )
     }

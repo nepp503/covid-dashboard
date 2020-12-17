@@ -1,62 +1,38 @@
 import "./tableItem.css"
 import React from "react";
-
+import Spinner from "../spinner"
 
 export default class TableItem extends React.Component {
 
-    state = {
-        caseType: this.props.caseType,
-        itemsList: null,
-        loading: true,
-        errors: false
-    }
-
-    componentDidMount = () => {
-        const { getTableItems } = this.props
-        setTimeout(() => this.loadItems(getTableItems, this.props.caseType), 2000)
-    }
-
-    componentWillReceiveProps(nextProps, nextContext) {
-        this.setState({
-            caseType: nextProps.caseType
-        })
-        console.log("props updated", nextProps.caseType)
-        setTimeout(() => this.loadItems(this.props.getTableItems, nextProps.caseType), 2000)
-    }
-
-    loadItems = (func, arg) => {
-        console.log(arg)
-        func(arg)
-            .then((itemsList) => {
-                this.setState({
-                    itemsList
-                })
-            })
+    constructor(props) {
+        super(props)
+        this.state = {
+            itemsArray: this.props.itemsArray
+        }
     }
 
     tableItems = (arr) => {
-        if (arr !== null) {
             return arr.map((item, index) => {
-                const { country } = item
-                const someCase = item[this.state.caseType]
-
+                const label = this.props.renderLabel(item)
                 return (
                     <li className='list-group-item'
-                        key={index}
-                        onClick = {()=> this.props.onSelectedItem(item)}
+                      key={index}
+                      onClick = {()=> this.props.onSelectedItem(item)}
                     >
-                        <span>{someCase}</span>
-                        <span>{country}</span>
+                      {label}
                     </li>
                 )
             })
-        }
     }
 
     render() {
 
-      const { itemsList } = this.state;
-      const items = this.tableItems(itemsList)
+      const { itemsArray } = this.state;
+      if ( !itemsArray) {
+            return <Spinner />
+      }
+
+      const items = this.tableItems(itemsArray);
 
       return (
           <div className="table">
@@ -66,5 +42,4 @@ export default class TableItem extends React.Component {
           </div>
       )
     }
-
 }

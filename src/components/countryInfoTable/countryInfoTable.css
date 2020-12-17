@@ -1,0 +1,21 @@
+.countryInfoTable {
+    background: rgba(255,255,255,.2);
+    border: solid 2px rgba(255,255,255,.1);
+    box-sizing: border-box;
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+    font-weight: 100;
+}
+
+.countryInfoTable h2{
+    margin: 0;
+    margin-bottom: 10px;
+    font-size: 17px;
+    font-weight: 200;
+}

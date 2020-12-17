@@ -1,15 +1,15 @@
-.inputItem input[type="text"]{
+.inputItem input[type="text"] {
     width: 100px;
     border-radius: 3px;
     border: none;
-    height: 22px;
+    height: 35px;
 }
 
-.inputItem input[type="submit"]{
+.inputItem input[type="submit"] {
     width: 60px;
     border-radius: 3px;
     border: none;
-    height: 25px;
+    height: 35px;
     margin-left: 5px;
 }
 
@@ -17,4 +17,3 @@
     margin-top: 10px;
     margin-bottom: 20px;
 }
-

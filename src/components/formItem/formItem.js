@@ -1,8 +1,7 @@
-import "./inputItem.css"
+import "./formItem.css"
 import React from "react";
 
-
-export default class InputItem extends React.Component {
+export default class FormItem extends React.Component {
 
     state = {
         value: "",
@@ -25,5 +24,4 @@ export default class InputItem extends React.Component {
           </form>
         )
     }
-
 }
