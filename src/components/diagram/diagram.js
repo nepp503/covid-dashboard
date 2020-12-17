@@ -22,7 +22,7 @@ export default class Diagram extends React.Component {
                 datasets: [{
                     label: this.props.cases,
                     data: this.props.data,
-                    backgroundColor: Array(this.props.data.length).fill('white'),
+                    backgroundColor: 'white',
                     barPercentage: 1,
                     categoryPercentage: 1,
                     borderWidth: 0
