@@ -33,6 +33,10 @@ export default class GlobalCasesTable extends React.Component {
         return this.state.caseType = nextState.caseType
     }
 
+    toHumanReadableNumber(num) {
+        return num.toLocaleString("ru")
+    }
+
     loadItems = (func, arg) => {
         func(arg)
             .then((itemsArray) => {
@@ -46,26 +50,22 @@ export default class GlobalCasesTable extends React.Component {
 
     render() {
 
-    const { itemsArray, error, loader } = this.state;
+    const { itemsArray, error} = this.state;
 
-    const hasData = !(loader || error )
     const errorIndicator = error? <ErrorIndicator />:null;
-    const spinner = loader? <Spinner /> : null;
-    const content = hasData?
-            <TableItem
-                renderLabel ={(item) => {
-                        return (
-                            <React.Fragment>
-                                <span>{item[this.state.caseType]}</span>
-                                <span>{item["country"]}</span>
-                            </React.Fragment>
-                        )
-                    }
-                }
-                itemsArray = {itemsArray}
-                onSelectedItem = {this.props.handleCountry}
-            /> :
-            null;
+    const content = <TableItem
+                        renderLabel ={(item) => {
+                                return (
+                                    <React.Fragment>
+                                        <span>{this.toHumanReadableNumber(item[this.state.caseType])}</span>
+                                        <span>{item["country"]}</span>
+                                    </React.Fragment>
+                                )
+                            }
+                        }
+                        itemsArray = {itemsArray}
+                        onSelectedItem = {this.props.handleCountry}
+                    />
 
       return (
           <div className="globalCasesTable">
@@ -74,10 +74,9 @@ export default class GlobalCasesTable extends React.Component {
             <div className="case-switcher">
                 <div className="case-switcher__item" id="cases" onClick={this.caseTypeSwitcher}><MaterialIcon title="Cases" icon="work" color='#ffffff' size={30}/></div>
                 <div className="case-switcher__item" id="recovered" onClick={this.caseTypeSwitcher}><MaterialIcon title="recovered" icon="health_and_safety" color='#ffffff' size={30}/></div>
-                <div className="case-switcher__item" id="deaths" onClick={this.caseTypeSwitcher}><MaterialIcon title="deaths" icon="report_problem" color='#ffffff' size={30}/></div>
+                <div className="case-switcher__item" id="deaths" onClick={this.caseTypeSwitcher}><span title="deaths"  className="iconify" data-icon="mdi-skull" data-inline="false"></span></div>
             </div>
               {errorIndicator}
-              {spinner}
               {content}
           </div>
       )

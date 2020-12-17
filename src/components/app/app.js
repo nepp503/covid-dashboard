@@ -23,6 +23,10 @@ export default class App extends React.Component {
         })
     }
 
+    shouldComponentUpdate(nextProps, nextState, nextContext) {
+      return this.state.selectedCountryObj = nextState.selectedCountryObj
+    }
+
     render() {
         return (
             <div>
@@ -41,6 +45,7 @@ export default class App extends React.Component {
                     <div className = 'cases_and_diagram_container'>
                         <CountryInfoTable
                           selectedCountryObj = {this.state.selectedCountryObj}
+                          getWorldStats         = {this.dataLoader.getWorldStats}
                         />
                         <Diagram />
                     </div>

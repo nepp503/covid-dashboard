@@ -44,3 +44,8 @@
 .case-switcher__item:hover {
     background: rgba(255,255,255,.4);
 }
+
+#deaths {
+    color: #ffffff;
+    font-size: 30px;
+}
