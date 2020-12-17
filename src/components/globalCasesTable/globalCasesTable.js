@@ -78,7 +78,7 @@ export default class GlobalCasesTable extends React.Component {
             <div className="case-switcher">
                 <div className="case-switcher__item" id="cases" onClick={this.caseTypeSwitcher}><MaterialIcon title="Cases" icon="work" color='#ffffff' size={30}/></div>
                 <div className="case-switcher__item" id="recovered" onClick={this.caseTypeSwitcher}><MaterialIcon title="recovered" icon="health_and_safety" color='#ffffff' size={30}/></div>
-                <div className="case-switcher__item" id="deaths" onClick={this.caseTypeSwitcher}><MaterialIcon title="deaths" icon="report_problem" color='#ffffff' size={30}/></div>
+                <div className="case-switcher__item" id="deaths" onClick={this.caseTypeSwitcher}><span title="deaths"  className="iconify" data-icon="mdi-skull" data-inline="false"></span></div>
             </div>
               {errorIndicator}
               {spinner}

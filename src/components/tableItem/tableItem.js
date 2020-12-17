@@ -11,6 +11,10 @@ export default class TableItem extends React.Component {
         }
     }
 
+    shouldComponentUpdate(nextProps, nextState, nextContext) {
+        return this.state.itemsArray = nextProps.itemsArray
+    }
+
     toHumanReadableNumber(num) {
         return num.toLocaleString("ru")
     }

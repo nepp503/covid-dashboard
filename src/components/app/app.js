@@ -24,7 +24,6 @@ export default class App extends React.Component {
     }
 
     shouldComponentUpdate(nextProps, nextState, nextContext) {
-      console.log("app updated", nextState.selectedCountryObj)
       return this.state.selectedCountryObj = nextState.selectedCountryObj
     }
 
