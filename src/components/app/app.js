@@ -3,9 +3,9 @@ import './app.css';
 import GlobalCases from "../globalCases";
 import Map from "../map";
 import Header from "../header";
-import Diagram from "../diagram";
 import TopCaseCountries from "../topCaseCountries";
 import GlobalCasesTable from "../globalCasesTable";
+import DiagramBoard from '../diagram/diagramBoard';
 
 export default class App extends React.Component {
 
@@ -36,7 +36,7 @@ export default class App extends React.Component {
 
                     <div className = 'cases_and_diagram_container'>
                         <TopCaseCountries />
-                        <Diagram />
+                        <DiagramBoard />
                     </div>
                 </div>
             </div>

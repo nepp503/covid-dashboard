@@ -30,4 +30,9 @@ export default class DataLoader {
         let cases = await this.getResource("all")
         return cases.recovered
     }
+
+    getHistorycallAll= async(type = "cases") =>  {
+        let cases = await this.getResource("historical/all?lastdays=all")
+        return cases[type];
+    }
 }
