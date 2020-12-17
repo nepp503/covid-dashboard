@@ -1,27 +1,38 @@
 import "./tableItem.css"
 import React from "react";
-
+import Spinner from "../spinner"
 
 export default class TableItem extends React.Component {
 
-    // state = {
+    constructor(props) {
+        super(props)
+        this.state = {
+            itemsArray: this.props.itemsArray
+        }
+    }
 
-    //     loading: true,
-    //     errors: false
-    // }
-
-    // componentWillReceiveProps(nextProps, nextContext) {
-    //     this.setState({
-    //         caseType: nextProps.caseType
-    //     })
-    //     console.log("props updated", nextProps.caseType)
-    //     setTimeout(() => this.loadItems(this.props.getTableItems, nextProps.caseType), 2000)
-    // }
-
+    tableItems = (arr) => {
+            return arr.map((item, index) => {
+                const label = this.props.renderLabel(item)
+                return (
+                    <li className='list-group-item'
+                      key={index}
+                      onClick = {()=> this.props.onSelectedItem(item)}
+                    >
+                      {label}
+                    </li>
+                )
+            })
+    }
 
     render() {
 
-      const { items } = this.props;
+      const { itemsArray } = this.state;
+      if ( !itemsArray) {
+            return <Spinner />
+      }
+
+      const items = this.tableItems(itemsArray);
 
       return (
           <div className="table">
