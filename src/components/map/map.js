@@ -9,13 +9,6 @@ export default class Map extends React.Component {
 
     state = {
         countryList: null,
-        markerData: [
-            {
-                lan: "fvdfv",
-                lat: "dfvdfv",
-                radius:"",
-            },
-        ]
     }
 
     dataLoader = new DataLoader();
@@ -27,16 +20,20 @@ export default class Map extends React.Component {
             })
     }
 
-    calculateRadus() {
-
-    }
-
     createMarkerData(countryList) {
 
-        let radus = this.calculateRadus()
+       const Markers = countryList.map(country => {
+        return (
+            <Circle 
+            center={[country.countryInfo.lat, country.countryInfo.long]}
+            fillColor="red" 
+            radius={country.cases*0.1}/>
+        )
+       })
 
         this.setState({
-            countryList
+            countryList,
+            Markers
         })
     }
 
@@ -48,17 +45,14 @@ export default class Map extends React.Component {
 
     render() {
         return (
-        // <div></div> 
-            <MapContainer center={[51.505, -0.09]} zoom={13} scrollWheelZoom={false} >
+        
+            <MapContainer center={[51.505, -0.09]} zoom={2} scrollWheelZoom={true} >
             <TileLayer
               attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
 
-                <Circle 
-                  center={[51.505, -0.09]}
-                  fillColor="blue" 
-                  radius={200}/>
+            {this.state.Markers}
 
           </MapContainer>
         )
