@@ -12,35 +12,50 @@ export default class DiagramBoard extends React.Component {
         this.dataLoader = new DataLoader();
         this.diagrams = ['cases', 'deaths', 'recovered'];
         this.currentDiagram = 'cases';
+        this.currentCountry = 'all';
+        this.dataForRender = null;
         this.state = {
             data: {}
         }
     }
 
-    render(){
+    render(){;
+        let dataForDiagram = null;
+        if(this.props.selectedCountryObj) {
+            if(this.currentCountry !== this.props.selectedCountryObj.country){
+                this.currentCountry = this.props.selectedCountryObj.country;
+                this.dataForRender = this.dataLoader.historycalCountryData.filter((item) => item.country === this.currentCountry)[0].timeline;
+            }
+        } else if (this.dataLoader.historycalWorldData) {
+            this.currentCountry = 'all';
+            this.dataForRender = this.dataLoader.historycalWorldData;
+        }
+        dataForDiagram = this.dataForRender ? this.renderDataForDiagram(this.dataForRender[this.currentDiagram]) : null;
         return(
             <div className='diagram-board'>
-                <Diagram data = {this.state.data} cases = {this.currentDiagram.toUpperCase()}/>
+                <Diagram data = {dataForDiagram} cases = {this.currentDiagram.toUpperCase()}/>
                 <DiagramSwitcher onClick = {(i) => this.handleSwitch(i)} cases = {this.currentDiagram.toUpperCase()}/>
             </div>
         );
     }
 
     componentDidMount(){
-        this.dataLoader.getHistorycallAll().then((items) => {
-            this.renderData(items);
+        this.dataLoader.getHistorycallAll().then(() => {
+            this.dataForRender = this.dataLoader.historycalWorldData;
+            const data = this.renderDataForDiagram(this.dataForRender[this.currentDiagram]);
+            this.setState({
+                data
+            });
         });
     }
 
-    renderData(items){
-        const itemArr = Object.entries(items);
-        let beforeRenderData = Array(itemArr.length).fill();
-        const data = beforeRenderData.map((item, i) => {
+    renderDataForDiagram(dataForRender){
+        const itemArr = Object.entries(dataForRender);
+        let dataBeforeRender = Array(itemArr.length).fill();
+        const data = dataBeforeRender.map((item, i) => {
             return item = {x: new Date(itemArr[i][0]), y: itemArr[i][1]};
         });
-        this.setState({
-            data
-        })
+        return data;
     }
 
     handleSwitch(i){
@@ -51,8 +66,9 @@ export default class DiagramBoard extends React.Component {
         } else {
             this.currentDiagram = this.diagrams[0];
         }
-        this.dataLoader.getHistorycallAll(this.currentDiagram).then((items) => {
-            this.renderData(items);
+        const data = this.renderDataForDiagram(this.dataForRender[this.currentDiagram]);
+        this.setState({
+            data
         });
     }
 }
