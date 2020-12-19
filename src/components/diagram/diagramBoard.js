@@ -24,7 +24,8 @@ export default class DiagramBoard extends React.Component {
         if(this.props.selectedCountryObj) {
             if(this.currentCountry !== this.props.selectedCountryObj.country){
                 this.currentCountry = this.props.selectedCountryObj.country;
-                this.dataForRender = this.dataLoader.historycalCountryData.filter((item) => item.country === this.currentCountry)[0].timeline;
+                this.dataForRender = this.dataLoader.historycalCountryData.filter((item) => item.country === this.currentCountry)
+                .filter(((item) => item.province === null))[0].timeline;
             }
         } else if (this.dataLoader.historycalWorldData) {
             this.currentCountry = 'all';
