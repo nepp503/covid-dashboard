@@ -48,14 +48,14 @@ export default class Map extends React.Component {
 
     createCoutriesLayers(WorldData) {
         let Polygons = [];
-        let Polygon =[];
+        let PolygonElem =[];
         console.log("worldData: ", WorldData)
         for (let i=0; i<WorldData.features.length; i++) {
             for (let j=0; j<WorldData.features[i].geometry.coordinates.length; j++) {
-                Polygon.push(WorldData.features[i].geometry.coordinates[j]);
+                PolygonElem.push(WorldData.features[i].geometry.coordinates[j]);
             }
-            Polygons.push(Polygon);
-            Polygon=[];
+            Polygons.push(PolygonElem);
+            PolygonElem=[];
         }
         const redOptions = { color: 'red' }
         const PolygonsArray = Polygons.map(polygon => {
