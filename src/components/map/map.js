@@ -51,9 +51,7 @@ export default class Map extends React.Component {
         let PolygonElem =[];
         console.log("worldData: ", WorldData)
         for (let i=0; i<WorldData.features.length; i++) {
-            for (let j=0; j<WorldData.features[i].geometry.coordinates.length; j++) {
-                PolygonElem.push(WorldData.features[i].geometry.coordinates[j]);
-            }
+            PolygonElem.push(WorldData.features[i].geometry.coordinates.map((item) => item.map((elem) => elem.reverse().map(e => Array.isArray(e) ? e.reverse() : e))));
             Polygons.push(PolygonElem);
             PolygonElem=[];
         }
