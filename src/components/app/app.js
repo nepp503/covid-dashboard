@@ -17,7 +17,6 @@ export default class App extends React.Component {
     }
 
     onSelectedCountry = (obj) => {
-        console.log(obj)
         this.setState({
             selectedCountryObj: obj
         })
