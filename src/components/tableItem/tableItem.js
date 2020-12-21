@@ -15,9 +15,6 @@ export default class TableItem extends React.Component {
         return this.state.itemsArray = nextProps.itemsArray
     }
 
-    toHumanReadableNumber(num) {
-        return num.toLocaleString("ru")
-    }
 
     tableItems = (arr) => {
         if (Array.isArray(arr)) {
@@ -35,19 +32,17 @@ export default class TableItem extends React.Component {
         } else {
             return Object.keys(arr).map((key, index) => {
               let item = arr[key]
-              console.log( key, item)
-              let keys = ["todayCases", "cases", "deaths", "recovered", "todayDeaths", "critical",
-                          "todayRecovered", "casesPerOneMillion ", "deathsPerOneMillion", "tests", "population",
+              const countryKeys = ["population", "cases", "todayCases", "deaths", "recovered", "todayDeaths",
+                                      "todayRecovered", "tests"
               ]
-
               if (typeof item !== "object") {
-                  if(keys.includes(key)) {
+                  if(countryKeys.includes(key)) {
+                      const label = this.props.renderLabel(key, item, arr)
                       return (
                           <li className='list-group__item countryInfo'
                               key={index}
                           >
-                              <span style={{"color": "rgba(255,255,255, .7)", "fontWeight": "300"}}>{key.toUpperCase()}: </span>
-                              <span style={{"fontWeight": "900"}}>{this.toHumanReadableNumber(item)}</span>
+                              {label}
                           </li>
                       )
                   }

@@ -33,9 +33,9 @@ export default class Map extends React.Component {
     createMarkerData(countryList) {
        const Markers = countryList.map(country => {
         return (
-            <Circle 
+            <Circle
             center={[country.countryInfo.lat, country.countryInfo.long]}
-            fillColor="red" 
+            fillColor="red"
             radius={country.cases*0.1}/>
         )
        })
@@ -51,7 +51,7 @@ export default class Map extends React.Component {
         for (let i=0; i<WorldData.features.length; i++) {
             polygonElem.push(WorldData.features[i].geometry.coordinates.map((item) => item.map((elem) => elem.reverse().map(e => Array.isArray(e) ? e.reverse() : e))));
             polygons.push({
-                coordinates: polygonElem, 
+                coordinates: polygonElem,
                 name: WorldData.features[i].properties.name,
             });
             polygonElem=[];
@@ -98,9 +98,9 @@ export default class Map extends React.Component {
                     [],
                   )
                 return (
-                    <Polygon 
-                        pathOptions={redOptions} 
-                        positions={polygon.coordinates} 
+                    <Polygon
+                        pathOptions={redOptions}
+                        positions={polygon.coordinates}
                         eventHandlers={eventHandlers}><Tooltip>{countryObj ? countryObj.country + '\n' + countryObj.cases : ''}</Tooltip></Polygon>
                 )
             }
