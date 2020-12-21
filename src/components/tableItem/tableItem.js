@@ -35,7 +35,6 @@ export default class TableItem extends React.Component {
         } else {
             return Object.keys(arr).map((key, index) => {
               let item = arr[key]
-              console.log( key, item)
               let keys = ["todayCases", "cases", "deaths", "recovered", "todayDeaths", "critical",
                           "todayRecovered", "casesPerOneMillion ", "deathsPerOneMillion", "tests", "population",
               ]
