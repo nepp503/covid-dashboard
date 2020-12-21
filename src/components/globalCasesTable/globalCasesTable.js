@@ -1,12 +1,18 @@
 import "./globalCasesTable.css"
 import React from "react";
 import TableItem from "../tableItem";
-import FormItem from "../formItem";
 import MaterialIcon from 'material-icons-react';
-import Spinner from '../spinner';
 import ErrorIndicator from '../error-indicator';
+import { Autocomplete } from '@material-ui/lab';
+import TextField from "@material-ui/core/TextField";
+
 
 export default class GlobalCasesTable extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.searchFilter = this.searchFilter.bind(this)
+    }
 
     state = {
         itemsArray: [],
@@ -48,7 +54,21 @@ export default class GlobalCasesTable extends React.Component {
         })
     }
 
+    searchFilter(event, value) {
+        this.props.handleCountry(value)
+    }
+
     render() {
+
+    const autoStyle = {
+      width: "90%",
+      backgroundColor: "#ffffff",
+      display: "inline-block",
+      justifyContent: "center",
+      color: "gray",
+      margin: "0 auto 10px",
+      border: "black"
+    }
 
     const { itemsArray, error} = this.state;
 
@@ -69,7 +89,15 @@ export default class GlobalCasesTable extends React.Component {
 
       return (
           <div className="globalCasesTable">
-            <FormItem />
+            <Autocomplete
+              id="combo-box-demo"
+              options={itemsArray}
+              onChange={this.searchFilter}
+              getOptionLabel={(option) => option.country}
+              style={autoStyle}
+              className="inputItem"
+              renderInput={(params) => <TextField {...params} label="Search" variant="outlined" />}
+            />
             <h2>Cases by country/region</h2>
             <div className="case-switcher">
                 <div className="case-switcher__item" id="cases" onClick={this.caseTypeSwitcher}><MaterialIcon title="Cases" icon="work" color='#ffffff' size={30}/></div>
