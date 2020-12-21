@@ -17,7 +17,6 @@ export default class App extends React.Component {
     }
 
     onSelectedCountry = (obj) => {
-        console.log(obj)
         this.setState({
             selectedCountryObj: obj
         })
@@ -40,6 +39,7 @@ export default class App extends React.Component {
                         />
                     </div>
                     <Map
+                        handleCountry = {this.onSelectedCountry}
                         toggleCountries = { this.dataLoader.getSortedCountries }
                     />
                     <div className = 'cases_and_diagram_container'>

@@ -42,8 +42,10 @@ export default class Diagram extends React.Component {
     }
 
     componentDidUpdate(){
-        this.myChart.data.datasets[0].data = this.props.data;
-        this.myChart.data.datasets[0].backgroundColor = Array(this.props.data.length).fill('white');
+        if(this.props.data){
+            this.myChart.data.datasets[0].data = this.props.data;
+            this.myChart.data.datasets[0].backgroundColor = Array(this.props.data.length).fill('white');
+        }
         this.myChart.data.datasets[0].label = this.props.cases;
         this.myChart.update();
     }
