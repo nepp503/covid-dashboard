@@ -92,7 +92,7 @@ export default class Map extends React.Component {
                 const eventHandlers = React.useMemo(
                     () => ({
                       click() {
-                        handler(countryObj);
+                          if(countryObj) handler(countryObj);
                       },
                     }),
                     [],
