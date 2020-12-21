@@ -24,7 +24,6 @@ export default class GlobalCasesTable extends React.Component {
 
     componentDidMount = () => {
         const { getCountries } = this.props
-
         setTimeout(() => this.loadItems(getCountries, this.state.caseType), 2000)
     }
 
@@ -70,13 +69,19 @@ export default class GlobalCasesTable extends React.Component {
       border: "black"
     }
 
-    const { itemsArray, error} = this.state;
+    const flagStyle = {
+        width: "20px",
+        height: "20px",
+        marginRight: "10px"
+    }
 
+    const { itemsArray, error} = this.state;
     const errorIndicator = error? <ErrorIndicator />:null;
     const content = <TableItem
                         renderLabel ={(item) => {
                                 return (
                                     <React.Fragment>
+                                        <img style={flagStyle} src={item.countryInfo.flag} alt=""/>
                                         <span>{this.toHumanReadableNumber(item[this.state.caseType])}</span>
                                         <span>{item["country"]}</span>
                                     </React.Fragment>
