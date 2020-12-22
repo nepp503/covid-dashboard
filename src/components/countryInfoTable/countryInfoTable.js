@@ -61,16 +61,12 @@ export default class CountryInfoTable extends React.Component {
     }
 
     renderLabel = (key, item, arr) => {
-        console.log("key", key)
-        console.log("item population", )
-
-
         if(this.state.isSwitched) {
             item = (item / arr["population"]) * 100000
         }
 
         item = item.toFixed(0)
-        console.log("item next", item)
+        item = this.toHumanReadableNumber(Number(item))
         return (
             <React.Fragment>
                 <span style={{"color": "rgba(255,255,255, .7)", "fontWeight": "300"}}>{key.toUpperCase()}: </span>
@@ -94,7 +90,7 @@ export default class CountryInfoTable extends React.Component {
             />
       return (
           <div className="countryInfoTable">
-            <h2>Country INFO</h2>
+            {/*<h2>Country INFO</h2>*/}
             {content}
 
             <div className="infoButtons">

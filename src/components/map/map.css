@@ -1,0 +1,70 @@
+.leaflet-container {
+    position:relative;
+}
+
+.legend {
+    position: absolute;
+    z-index: 100000;
+    left: 90%;
+    top: 0;
+    cursor: pointer;
+}
+
+.dialog-body {
+    margin: 10px;
+}
+
+.dialog-body h3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: center;
+    align-content: center;
+}
+
+.circle {
+    display: inline-block;
+    background: red;
+    border-radius: 50%;
+    
+}
+
+.circle10 {
+    width: 30px;
+    height: 30px;
+}
+
+.circle2 {
+    width: 15px;
+    height: 15px;
+}
+
+.circle3 {
+    width: 12px;
+    height: 12px;
+}
+
+.circle4 {
+    width: 10px;
+    height: 10px;
+}
+
+.circle5 {
+    width: 7px;
+    height: 7px;
+}
+
+.circle6 {
+    width: 5px;
+    height: 5px;
+}
+
+.circle7 {
+    width: 2px;
+    height: 2px;
+}
+
+.circle1 {
+    width: 10px;
+    height: 10px;
+}
+
