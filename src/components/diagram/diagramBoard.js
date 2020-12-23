@@ -1,8 +1,8 @@
-import "./diagram.css";
+import './diagram.css';
 import React from 'react';
-import DataLoader from "../../service/dataLoader";
-import Diagram from "./diagram";
-import DiagramSwitcher from "./diagramSwitcher";
+import DataLoader from '../../service/dataLoader';
+import Diagram from './diagram';
+import DiagramSwitcher from './diagramSwitcher';
 
 
 export default class DiagramBoard extends React.Component {

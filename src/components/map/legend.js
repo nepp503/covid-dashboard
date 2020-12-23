@@ -20,7 +20,7 @@ export default class Legend extends React.Component {
 
         return (
             <div className="legend">
-                <MaterialIcon  icon="list" color='black' size={70} onClick={this.handleClickOpen} />
+                <MaterialIcon  icon="list" color='black' size={50} onClick={this.handleClickOpen} />
                 <LegendDialog open={this.state.isOpen} onClose={this.handleClose} />
             </div>
         )
