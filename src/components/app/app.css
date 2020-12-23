@@ -1,14 +1,12 @@
 body {
     box-sizing: border-box;
-
     font-family: "Roboto", sans-serif;
     font-size: 15px;
     color: rgba(255,255,255,.7);
     background-color: black;
-
     margin: 0;
     padding: 0;
-    overflow: hidden;
+    overflow-x: hidden;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -56,16 +54,13 @@ h6 {
 
 .container {
     margin: 10px;
-    height: calc(100vh - 90px);
-    display: grid;
-    justify-content: center;
-    grid-template-columns: 20% 1fr 25%;
-    grid-template-rows: 95% 5%;
-    grid-template-areas: 
-    "global_cases map cases_and_diagram"
-    "global_cases map_switch cases_and_diagram";
-    grid-column-gap: 10px;
+    height: calc(100vh);
+    display: flex;
+    justify-content: space-between;
     box-sizing: border-box;
+    width: calc(100vw - 4%);
+    flex-direction: column;
+    flex-wrap: wrap;
 }
 
 .global_cases_container {
@@ -73,7 +68,9 @@ h6 {
     flex-direction: column;
     justify-content: flex-start;
     align-content: center;
-    grid-area: global_cases;
+    order: 0;
+    height: 70vh;
+    width: 21vw;
 }
 
 .cases_and_diagram_container {
@@ -83,13 +80,91 @@ h6 {
     justify-content: flex-start;
     color: white;
     box-sizing: border-box;
-    grid-area: cases_and_diagram;
+    order: 4;
+    width: 21vw;
+    height: 100vh;
 }
 
-#mapid {
-    width:49%;
-    height: 89%;
-    background: rgb(41, 41, 75);
+.map_switchers {
+    order: 2;
+}
+
+.diagram_container {
+    order: 3;
+    height: 50vh;
+}
+
+
+
+.map-switch {
+    position: relative;
+}
+
+.leaflet-container {
+    position:relative;
+    width:48vw;
+    height:45vh;
+    order: 1;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.globalCasesTable {
+    box-sizing: border-box;
+    width: 100%;
+    background: rgba(255,255,255,.2);
     border: solid 2px rgba(255,255,255,.1);
-    color: blue;
+    margin-top: 10px;
+    padding-top: 20px;
+    padding-bottom: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+    font-weight: 100;
+    height: 100vh;
+}
+
+.header {
+    height: 60px;
+    background: rgba(255,255,255,.2);
+    border: solid 2px rgba(255,255,255,.1);
+    border-top: none;
+    margin: 0 10px 10px 10px;
+    width: 95vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+#root {
+    width: 100vw;
+    height: 100vh;
+}
+
+.diagram {
+    width: 10vw;
+    height: 10vh;
+    order: 3;
+}
+
+.countryInfoTable {
+    background: rgba(255,255,255,.2);
+    border: solid 2px rgba(255,255,255,.1);
+    box-sizing: border-box;
+    width: 100%;
+    padding-top: 10px;
+    padding-bottom: 5px;
+    display: flex;
+    flex-direction: column;
+    font-weight: 100;
+    height: 100vh;
+    position: relative;
+}
+
+.chart-render-monitor {
+    width: 522px;
+    height: 200px;
 }

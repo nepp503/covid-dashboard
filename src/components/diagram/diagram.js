@@ -11,7 +11,7 @@ export default class Diagram extends React.Component {
 
     render() {
         return (
-            <canvas ref={this.chartRef} />
+            <canvas className="diagram" ref={this.chartRef} />
         );
     }
 
