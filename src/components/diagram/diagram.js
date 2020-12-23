@@ -1,4 +1,4 @@
-import "./diagram.css";
+import './diagram.css';
 import React from 'react';
 import Chart from 'chart.js';
 
@@ -11,7 +11,7 @@ export default class Diagram extends React.Component {
 
     render() {
         return (
-            <canvas ref={this.chartRef} />
+            <canvas ref={this.chartRef} height='250px'/>
         );
     }
 
@@ -22,7 +22,7 @@ export default class Diagram extends React.Component {
                 datasets: [{
                     label: this.props.cases,
                     data: this.props.data,
-                    backgroundColor: 'white',
+                    backgroundColor: 'red',
                     barPercentage: 1,
                     categoryPercentage: 1,
                     borderWidth: 0
@@ -44,7 +44,7 @@ export default class Diagram extends React.Component {
     componentDidUpdate(){
         if(this.props.data){
             this.myChart.data.datasets[0].data = this.props.data;
-            this.myChart.data.datasets[0].backgroundColor = Array(this.props.data.length).fill('white');
+            this.myChart.data.datasets[0].backgroundColor = Array(this.props.data.length).fill('red');
         }
         this.myChart.data.datasets[0].label = this.props.cases;
         this.myChart.update();

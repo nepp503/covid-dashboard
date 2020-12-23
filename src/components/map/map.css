@@ -26,7 +26,6 @@
     display: inline-block;
     background: red;
     border-radius: 50%;
-    
 }
 
 .circle10 {
@@ -72,12 +71,28 @@
 .map-switch{
     grid-area: map_switch;
     display: flex;
-    justify-content: space-around;
+    justify-content: flex-start;
     align-items: flex-start;
 }
 
 .map-btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 45px;
+    width: 60px;
     background: rgba(255,255,255,.2);
     border: solid 2px rgba(255,255,255,.1);
+    border-radius: 10px;
     cursor: pointer;
+    color: #ffffff;
+    font-size: 30px;
+    outline: none;
+}
+
+.active{
+    background: rgba(0, 0, 0, 0.26);
+    border: solid 2px rgba(194, 192, 192, 1);
+    border-radius: 0px 0px 10px 10px;
+    border-top: none;
 }

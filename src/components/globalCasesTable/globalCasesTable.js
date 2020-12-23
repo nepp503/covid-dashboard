@@ -28,7 +28,6 @@ export default class GlobalCasesTable extends React.Component {
     }
 
     caseTypeSwitcher = (e) => {
-        console.log(this.state.caseType)
         this.setState({
             caseType: e.currentTarget.id
         })
@@ -45,7 +44,6 @@ export default class GlobalCasesTable extends React.Component {
     loadItems = (func, arg) => {
         func(arg)
             .then((itemsArray) => {
-                console.log("inside", itemsArray)
                 this.setState({
                     loader:false,
                     itemsArray
@@ -107,7 +105,7 @@ export default class GlobalCasesTable extends React.Component {
             <div className="case-switcher">
                 <div className="case-switcher__item" id="cases" onClick={this.caseTypeSwitcher}><MaterialIcon title="Cases" icon="work" color='#ffffff' size={30}/></div>
                 <div className="case-switcher__item" id="recovered" onClick={this.caseTypeSwitcher}><MaterialIcon title="recovered" icon="health_and_safety" color='#ffffff' size={30}/></div>
-                <div className="case-switcher__item" id="deaths" onClick={this.caseTypeSwitcher}><span title="deaths"  className="iconify" data-icon="mdi-skull" data-inline="false"></span></div>
+                <div className="case-switcher__item" id="deaths" onClick={this.caseTypeSwitcher}><span title="deaths" className="iconify" data-icon="mdi-skull" data-inline="false"></span></div>
             </div>
               {errorIndicator}
               {content}
