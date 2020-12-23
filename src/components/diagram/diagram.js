@@ -37,7 +37,8 @@ export default class Diagram extends React.Component {
                         }
                     }]
                 }
-            }
+            },
+            responsive: false
         });
     }
 

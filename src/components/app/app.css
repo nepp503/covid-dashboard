@@ -82,7 +82,7 @@ h6 {
     box-sizing: border-box;
     order: 4;
     width: 21vw;
-    height: 100vh;
+    height: 88vh;
 }
 
 .map_switchers {
@@ -94,6 +94,10 @@ h6 {
     height: 50vh;
 }
 
+.chart-render-monitor {
+    width: 500px;
+    height: 10vh;
+}
 
 
 .map-switch {
@@ -165,16 +169,14 @@ h6 {
     justify-content: space-between;
 }
 
-.chart-render-monitor {
-    width: 30vw;
-    height: 15vh;
-}
+
 
 @media (max-width: 1100px) {
 
     .container {
         height: fit-content;
         flex-direction: row;
+        box-sizing: border-box;
     }
 
     .cases_and_diagram_container {
@@ -231,4 +233,6 @@ h6 {
         width: 500px;
         height: 10vh;
     }
+
+
 }
