@@ -3,10 +3,10 @@ import './app.css';
 import GlobalCases from "../globalCases";
 import Map from "../map";
 import Header from "../header";
-import Diagram from "../diagram";
 import CountryInfoTable from "../countryInfoTable";
 import GlobalCasesTable from "../globalCasesTable";
 import DataLoader from "../../service/dataLoader";
+import DiagramBoard from '../diagram/diagramBoard';
 
 export default class App extends React.Component {
 
@@ -24,7 +24,7 @@ export default class App extends React.Component {
     }
 
     shouldComponentUpdate(nextProps, nextState, nextContext) {
-      return this.state.selectedCountryObj = nextState.selectedCountryObj
+      return this.state.selectedCountryObj = nextState.selectedCountryObj;
     }
 
     render() {
@@ -47,7 +47,7 @@ export default class App extends React.Component {
                           selectedCountryObj = {this.state.selectedCountryObj}
                           getWorldStats         = {this.dataLoader.getWorldStats}
                         />
-                        <Diagram />
+                        <DiagramBoard selectedCountryObj = {this.state.selectedCountryObj}/>
                     </div>
                 </div>
             </div>

@@ -56,7 +56,7 @@ h6 {
 
 .container {
     margin: 10px;
-    height: calc(100vh - 90px);
+    height: calc(100vh - 120px);
     display: grid;
     justify-content: center;
     grid-template-columns: 20% 1fr 25%;
@@ -82,7 +82,7 @@ h6 {
 
 #mapid {
     width:49%;
-    height: 89%;
+    height: 80%;
     background: rgba(255,255,255,.2);
     border: solid 2px rgba(255,255,255,.1);
 }
