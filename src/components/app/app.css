@@ -94,12 +94,6 @@ h6 {
     height: 50vh;
 }
 
-.chart-render-monitor {
-    width: 500px;
-    height: 10vh;
-}
-
-
 .map-switch {
     position: relative;
 }
@@ -107,7 +101,7 @@ h6 {
 .leaflet-container {
     position:relative;
     width:48vw;
-    height:40vh;
+    height:37vh;
     order: 1;
     justify-content: center;
     margin: 0 auto;
@@ -169,7 +163,40 @@ h6 {
     justify-content: space-between;
 }
 
+.diagram-board {
+    margin: 0 auto;
+    width: 50vw;
+    height: 50vh;
+}
 
+.footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 15vh;
+    background-color: white;
+    height:50px;
+    color: black;
+    width:98vw;
+}
+
+.school_logo {
+    width: 100px;
+    height: 45px;
+}
+
+.git-hub_links {
+    display: flex;
+    justify-content: space-between;
+    width: 60vw;
+    height: 45px;
+    align-items: center;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
 
 @media (max-width: 1100px) {
 
@@ -229,10 +256,13 @@ h6 {
         height: 50vh;
     }
 
-    .chart-render-monitor {
-        width: 500px;
-        height: 10vh;
+    .diagram-board {
+        width: 95vw;
+        height: 50vh;
     }
 
 
+    .footer {
+        margin-top: 25vh;
+    }
 }

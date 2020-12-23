@@ -24,7 +24,6 @@ export default class CountryInfoTable extends React.Component {
     }
 
     shouldComponentUpdate(nextProps, nextState, nextContext) {
-      console.log(nextState.isSwitched)
       this.state.selectedCountryObj = nextProps.selectedCountryObj
       this.state.loader = false
 
@@ -37,10 +36,8 @@ export default class CountryInfoTable extends React.Component {
     }
 
     loadItems = (func, arg) => {
-        console.log(func)
         func()
             .then((worldStats) => {
-                console.log("inside", worldStats)
                 this.setState({
                     loader:false,
                     worldStats
