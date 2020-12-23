@@ -7,6 +7,7 @@ import CountryInfoTable from "../countryInfoTable";
 import GlobalCasesTable from "../globalCasesTable";
 import DataLoader from "../../service/dataLoader";
 import DiagramBoard from '../diagram/diagramBoard';
+import MapSwitcher from '../map/mapSwitcher';
 
 export default class App extends React.Component {
 
@@ -49,6 +50,7 @@ export default class App extends React.Component {
                         />
                         <DiagramBoard selectedCountryObj = {this.state.selectedCountryObj}/>
                     </div>
+                    <MapSwitcher/>
                 </div>
             </div>
         );
