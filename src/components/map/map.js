@@ -28,11 +28,8 @@ export default class Map extends React.Component {
             })
     }
 
-<<<<<<< HEAD
-=======
 
 
->>>>>>> f2230823e1acbe36d07d109a86ff735fec6a07e1
     createMarkerData(countryList) {
        const Markers = countryList.map(country => {
         return (
@@ -43,21 +40,10 @@ export default class Map extends React.Component {
         )
        })
 
-<<<<<<< HEAD
-       const Markers = countryList.map(country => {
-        return (
-            <Circle 
-            center={[country.countryInfo.lat, country.countryInfo.long]}
-            fillColor="red" 
-            radius={country.cases*0.1}/>
-        )
-       })
-
         this.setState({
             countryList,
             Markers
         })
-=======
        console.log("Markers: ", Markers)
 
        return Markers;
@@ -75,7 +61,6 @@ export default class Map extends React.Component {
             polygonElem=[];
         }
         return this.createPolygons(polygons, countryList);
->>>>>>> f2230823e1acbe36d07d109a86ff735fec6a07e1
     }
 
     componentDidMount() {
@@ -86,17 +71,6 @@ export default class Map extends React.Component {
 
     render() {
         return (
-<<<<<<< HEAD
-            <MapContainer center={[51.505, -0.09]} zoom={2} scrollWheelZoom={true} >
-              <TileLayer
-                attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-              />
-             {this.state.Markers}
-          </MapContainer>
-        )
-    }
-=======
             <MapContainer center={[51.505, -0.09]} zoom={2} scrollWheelZoom={true}>
             <GeoJSON
               data={worldGeoJSON}
@@ -138,5 +112,4 @@ export default class Map extends React.Component {
         })
         return PolygonsArray;
     }
->>>>>>> f2230823e1acbe36d07d109a86ff735fec6a07e1
 }

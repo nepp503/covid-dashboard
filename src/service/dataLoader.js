@@ -41,9 +41,6 @@ export default class DataLoader {
     getHistorycallAll= async() =>  {
         let wordlCases = await this.getResource("historical/all?lastdays=all");
         this.historycalWorldData = wordlCases;
-<<<<<<< HEAD
-        let eachCountryCases = await this.getResource("historical?lastdays=all");
-=======
         let eachCountryCasesWithProvinces = await this.getResource("historical?lastdays=all");
         let countriesNamesSet = new Set();
         eachCountryCasesWithProvinces.forEach(element => {
@@ -51,7 +48,6 @@ export default class DataLoader {
         });
         let countriesNames = [...countriesNamesSet].join(',');
         let eachCountryCases = await this.getResource(`historical/${countriesNames}?lastdays=all`);
->>>>>>> f2230823e1acbe36d07d109a86ff735fec6a07e1
         this.historycalCountryData = eachCountryCases;
     }
 }

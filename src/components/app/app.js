@@ -38,10 +38,12 @@ export default class App extends React.Component {
                           getCountries   = {this.dataLoader.getSortedCountries}
                         />
                     </div>
+                    
                     <Map
                         handleCountry = {this.onSelectedCountry}
                         toggleCountries = { this.dataLoader.getSortedCountries }
                     />
+                    
                     <div className = 'cases_and_diagram_container'>
                         <CountryInfoTable
                           selectedCountryObj = {this.state.selectedCountryObj}
