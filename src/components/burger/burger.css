@@ -58,11 +58,11 @@
     padding: 0;
     width: 400px;
     height: 100%;
-    //display: none;
+    display: none;
 }
 .menu-open .level-menu {
   right: 0;
-  //display: block;
+  display: block;
 }
 
 .menu-open .level-menu-toggle {
