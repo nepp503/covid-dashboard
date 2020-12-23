@@ -58,6 +58,9 @@ export default class App extends React.Component {
                         <DiagramBoard selectedCountryObj = {this.state.selectedCountryObj}/>
                     </div>
                 </div>
+                <div className="footer">
+                    <img className="school_logo" src="https://rs.school/images/rs_school_js.svg"></img>
+                </div>
             </React.Fragment>
         );
     };
