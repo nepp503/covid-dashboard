@@ -7,6 +7,7 @@ import CountryInfoTable from "../countryInfoTable";
 import GlobalCasesTable from "../globalCasesTable";
 import DataLoader from "../../service/dataLoader";
 import DiagramBoard from '../diagram/diagramBoard';
+import MapSwitcher from '../map/mapSwitcher';
 
 export default class App extends React.Component {
 
@@ -47,10 +48,24 @@ export default class App extends React.Component {
                           selectedCountryObj = {this.state.selectedCountryObj}
                           getWorldStats      = {this.dataLoader.getWorldStats}
                         />
+                       
+                       
                     </div>
+                    
                     <div className="diagram_container">
                         <DiagramBoard selectedCountryObj = {this.state.selectedCountryObj}/>
                     </div>
+                </div>
+                <div className="footer">
+                    <a href="https://rs.school/js/">
+                        <img className="school_logo" src="https://rs.school/images/rs_school_js.svg"></img>
+                    </a>
+                    <div className="git-hub_links"> 
+                        <a href="https://github.com/FullCycleRoid">FullCycleRoid</a> 
+                        <a href="https://github.com/nepp503">nepp503</a> 
+                        <a href="https://github.com/JustAnotherAlexander">JustAnotherAlexander</a> 
+                    </div>
+                    <span>2020</span>
                 </div>
             </React.Fragment>
         );

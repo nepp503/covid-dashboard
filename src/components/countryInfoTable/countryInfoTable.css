@@ -1,24 +1,4 @@
-.countryInfoTable {
-    background: rgba(255,255,255,.2);
-    border: solid 2px rgba(255,255,255,.1);
-    box-sizing: border-box;
-    width: 100%;
-    padding-top: 10px;
-    padding-bottom: 5px;
-    display: flex;
-    flex-direction: column;
-    font-weight: 100;
 
-    position: relative;
-}
-
-.countryInfoTable h2{
-    text-align: center;
-    margin: 0;
-    margin-bottom: 10px;
-    font-size: 17px;
-    font-weight: 100;
-}
 
 .infoButtons {
     display: flex;
