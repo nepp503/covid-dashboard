@@ -29,7 +29,7 @@ export default class App extends React.Component {
 
     render() {
         return (
-            <div>
+            <React.Fragment>
                 <Header />
                 <div className='container'>
                     <div className = 'global_cases_container'>
@@ -48,11 +48,17 @@ export default class App extends React.Component {
                           selectedCountryObj = {this.state.selectedCountryObj}
                           getWorldStats      = {this.dataLoader.getWorldStats}
                         />
+                       
+                       
+                    </div>
+                    <div className="map_switchers">
+                        <MapSwitcher/>
+                    </div>
+                    <div className="diagram_container">
                         <DiagramBoard selectedCountryObj = {this.state.selectedCountryObj}/>
                     </div>
-                    <MapSwitcher/>
                 </div>
-            </div>
+            </React.Fragment>
         );
     };
 };
