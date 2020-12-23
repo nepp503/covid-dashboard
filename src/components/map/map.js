@@ -4,7 +4,7 @@ import { MapContainer, GeoJSON, Circle, Polygon,Tooltip } from 'react-leaflet'
 import DataLoader from "../../service/dataLoader";
 import worldGeoJSON from 'geojson-world-map';
 import WorldData from './world';
-
+import Legend from "./legend";
 
 
 export default class Map extends React.Component {
@@ -79,6 +79,7 @@ export default class Map extends React.Component {
             />
             {this.state.Markers}
             {this.state.PolygonsArray}
+            <Legend />
           </MapContainer>
         )
     }
