@@ -42,11 +42,22 @@ export default class App extends React.Component {
                         handleCountry = {this.onSelectedCountry}
                         toggleCountries = { this.dataLoader.getSortedCountries }
                     />
-                        <CountryInfoTable
-                          selectedCountryObj = {this.state.selectedCountryObj}
-                          getWorldStats      = {this.dataLoader.getWorldStats}
-                        />
-                        <DiagramBoard selectedCountryObj = {this.state.selectedCountryObj}/>
+                    <CountryInfoTable
+                        selectedCountryObj = {this.state.selectedCountryObj}
+                        getWorldStats      = {this.dataLoader.getWorldStats}
+                    />
+                    <DiagramBoard selectedCountryObj = {this.state.selectedCountryObj}/>
+                    <div className="footer">
+                        <a href="https://rs.school/js/">
+                            <img className="school_logo" src="https://rs.school/images/rs_school_js.svg"></img>
+                        </a>
+                        <div className="git-hub_links"> 
+                            <a href="https://github.com/FullCycleRoid">FullCycleRoid</a> 
+                            <a href="https://github.com/nepp503">nepp503</a> 
+                            <a href="https://github.com/JustAnotherAlexander">JustAnotherAlexander</a> 
+                        </div>
+                        <span>2020</span>
+                    </div>
                 </div>
             </React.Fragment>
         );

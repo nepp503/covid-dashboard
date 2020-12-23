@@ -58,11 +58,12 @@ h6 {
     display: grid;
     justify-content: center;
     grid-template-columns: 20% 1fr 25%;
-    grid-template-rows: 65% 30% 5%;
+    grid-template-rows: 1fr 25% 14% 50px;
     grid-template-areas: 
     "global_cases map country_info_table"
     "global_cases map diagram"
-    "global_cases map_switch diagram";
+    "global_cases map_switch diagram"
+    "footer footer footer";
     grid-column-gap: 10px;
 }
 
@@ -111,16 +112,41 @@ h6 {
     position: relative;
 }
 
+.footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(255,255,255,.2);
+    color: red;
+    grid-area: footer;
+    margin-top: 19px;
+}
+
+.school_logo {
+    width: 100px;
+    height: 25px;
+}
+
+.git-hub_links {
+    display: flex;
+    justify-content: space-between;
+    width: 60vw;
+    height: 45px;
+    align-items: center;
+}
+
 @media (max-width: 1000px) {
 
     .container {
         grid-template-columns: 1fr 1fr;
-        grid-template-rows: 2fr 0.1fr 2fr;
+        grid-template-rows: 2fr 0.1fr 2fr 0.1fr;
         row-gap: 2px;
         grid-template-areas: 
         "global_cases map"
         "country_info_table map_switch"
         "country_info_table diagram"
+        "footer footer"
     }
 }
 
@@ -133,11 +159,12 @@ h6 {
 
     .container {
         grid-template-columns: 1fr 1fr;
-        grid-template-rows: 1fr 0.1fr 0.5fr 0.5fr;
+        grid-template-rows: 1fr 0.1fr 0.5fr 0.5fr 0.1fr;
         grid-template-areas: 
         "map map"
         "map_switch map_switch"
         "global_cases country_info_table"
         "diagram diagram"
+        "footer footer"
     }
 }
