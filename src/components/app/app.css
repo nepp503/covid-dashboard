@@ -82,7 +82,13 @@ h6 {
 
 #mapid {
     width:49%;
+<<<<<<< HEAD
     height: 80%;
     background: rgba(255,255,255,.2);
+=======
+    height: 89%;
+    background: rgb(41, 41, 75);
+>>>>>>> f2230823e1acbe36d07d109a86ff735fec6a07e1
     border: solid 2px rgba(255,255,255,.1);
+    color: blue;
 }
