@@ -83,7 +83,9 @@ export default class Map extends React.Component {
                     {this.state.PolygonsArray}
                     <Legend />
                 </MapContainer>
-                <MapSwitcher handleCaseSwitch = {(cases) => this.renderMarkerData(cases)}/>
+                <div className='map_switchers'>
+                    <MapSwitcher handleCaseSwitch = {(cases) => this.renderMarkerData(cases)}/>
+                </div>
           </>
         )
     }
