@@ -1,3 +1,7 @@
+.leaflet-container {
+    grid-area: map;
+}
+
 .legend {
     position: absolute;
     z-index: 100000;

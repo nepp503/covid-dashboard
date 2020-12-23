@@ -42,15 +42,11 @@ export default class App extends React.Component {
                         handleCountry = {this.onSelectedCountry}
                         toggleCountries = { this.dataLoader.getSortedCountries }
                     />
-                    <div className = 'cases_and_diagram_container'>
                         <CountryInfoTable
                           selectedCountryObj = {this.state.selectedCountryObj}
                           getWorldStats      = {this.dataLoader.getWorldStats}
                         />
-                    </div>
-                    <div className="diagram_container">
                         <DiagramBoard selectedCountryObj = {this.state.selectedCountryObj}/>
-                    </div>
                 </div>
             </React.Fragment>
         );

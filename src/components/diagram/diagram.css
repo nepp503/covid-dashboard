@@ -1,5 +1,6 @@
 .diagram-board{
     text-align: center;
+    grid-area: diagram;
 }
 
 .diagram-switch{
