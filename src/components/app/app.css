@@ -60,6 +60,10 @@ h6 {
     display: grid;
     justify-content: center;
     grid-template-columns: 20% 1fr 25%;
+    grid-template-rows: 95% 5%;
+    grid-template-areas: 
+    "global_cases map cases_and_diagram"
+    "global_cases map_switch cases_and_diagram";
     grid-column-gap: 10px;
     box-sizing: border-box;
 }
@@ -69,6 +73,7 @@ h6 {
     flex-direction: column;
     justify-content: flex-start;
     align-content: center;
+    grid-area: global_cases;
 }
 
 .cases_and_diagram_container {
@@ -78,11 +83,13 @@ h6 {
     justify-content: flex-start;
     color: white;
     box-sizing: border-box;
+    grid-area: cases_and_diagram;
 }
 
 #mapid {
     width:49%;
     height: 89%;
-    background: rgba(255,255,255,.2);
+    background: rgb(41, 41, 75);
     border: solid 2px rgba(255,255,255,.1);
+    color: blue;
 }
