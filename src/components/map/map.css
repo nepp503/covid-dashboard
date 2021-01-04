@@ -1,0 +1,92 @@
+.legend {
+    position: absolute;
+    z-index: 100000;
+    left: 90%;
+    top: 0;
+    cursor: pointer;
+}
+
+.dialog-body {
+    margin: 10px;
+}
+
+.dialog-body h3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: center;
+    align-content: center;
+}
+
+.circle {
+    display: inline-block;
+    background: red;
+    border-radius: 50%;
+}
+
+.circle10 {
+    width: 30px;
+    height: 30px;
+}
+
+.circle2 {
+    width: 15px;
+    height: 15px;
+}
+
+.circle3 {
+    width: 12px;
+    height: 12px;
+}
+
+.circle4 {
+    width: 10px;
+    height: 10px;
+}
+
+.circle5 {
+    width: 7px;
+    height: 7px;
+}
+
+.circle6 {
+    width: 5px;
+    height: 5px;
+}
+
+.circle7 {
+    width: 2px;
+    height: 2px;
+}
+
+.circle1 {
+    width: 10px;
+    height: 10px;
+}
+
+.map-switch{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.map-btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 45px;
+    width: 60px;
+    background: rgba(255,255,255,.2);
+    border: solid 2px rgba(255,255,255,.1);
+    border-radius: 10px;
+    cursor: pointer;
+    color: #ffffff;
+    font-size: 30px;
+    outline: none;
+}
+
+.active{
+    background: rgba(0, 0, 0, 0.26);
+    border: solid 2px rgba(194, 192, 192, 1);
+    border-radius: 0px 0px 10px 10px;
+    border-top: none;
+}

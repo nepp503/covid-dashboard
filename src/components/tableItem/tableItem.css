@@ -1,0 +1,38 @@
+.table {
+    text-decoration: none;
+    overflow:auto;
+}
+
+.table ul {
+        overflow:auto;
+}
+
+.list-group__item {
+    margin: 5px 0;
+    padding: 5px 0;
+    border-bottom: 2px solid rgba(41, 41, 41, 1);
+}
+
+.list-group__item:hover {
+    background: rgba(41, 41, 41, 1);
+}
+
+
+.list-group__item span:nth-child(2) {
+    color:red;
+    padding-right: 15px;
+    font-weight: 500;
+    font-size: 17px;
+}
+
+.list-group__item span:nth-child(3) {
+    padding-right: 5px;
+    font-weight: 500;
+    font-size: 20px;
+    color: white
+}
+
+
+.countryInfo {
+    margin-left: 25px;
+}
